@@ -33,4 +33,8 @@ public class ProductService {
     public List<Product> filter(Integer min, Integer max) {
         return productRepository.findAllByPriceBetween(min, max);
     }
+
+    public void save(Product product) {
+        productRepository.save(product);
+    }
 }

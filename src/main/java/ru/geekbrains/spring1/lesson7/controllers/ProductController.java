@@ -46,4 +46,13 @@ public class ProductController {
         return productService.filter(min, max);
     }
 
+    @GetMapping("/products/save")
+    public void addNewProduct(@RequestParam Long id, @RequestParam String title, @RequestParam Integer price) {
+        System.out.println(id);
+        System.out.println(title);
+        System.out.println(price);
+        Product product = new Product(id, title, price);
+        productService.save(product);
+
+    }
 }
