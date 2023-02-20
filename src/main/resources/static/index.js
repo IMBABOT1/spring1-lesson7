@@ -11,6 +11,20 @@ angular.module('app', []).controller('indexController', function ($scope, $http)
             });
     };
 
+    $scope.changePrice = function (productId, delta) {
+        console.log(productId);
+        $http({
+            url: contextPath + '/products/change_price',
+            method: 'GET',
+            params: {
+                productId: productId,
+                delta: delta
+            }
+        }).then(function (response) {
+            $scope.loadProducts();
+        });
+    }
+
 
     $scope.loadProducts();
 });

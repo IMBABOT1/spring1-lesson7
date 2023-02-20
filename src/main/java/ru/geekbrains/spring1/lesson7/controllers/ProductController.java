@@ -31,6 +31,15 @@ public class ProductController {
         return productService.findAll();
     }
 
+
+
+    @GetMapping("/products/change_price")
+    public void changeScore(@RequestParam Long productId, @RequestParam Integer delta) {
+        System.out.println(productId);
+       // studentService.changeScore(studentId, delta);
+        productService.changePrice(productId, delta);
+    }
+
     @GetMapping("/products/{id}")
     public Product getProductById(@PathVariable Long id) {
         return productService.findById(id).orElseThrow(() -> new ResourceNotFoundException("Product not found, id: " + id));
@@ -48,9 +57,6 @@ public class ProductController {
 
     @GetMapping("/products/save")
     public void addNewProduct(@RequestParam Long id, @RequestParam String title, @RequestParam Integer price) {
-        System.out.println(id);
-        System.out.println(title);
-        System.out.println(price);
         Product product = new Product(id, title, price);
         productService.save(product);
 
