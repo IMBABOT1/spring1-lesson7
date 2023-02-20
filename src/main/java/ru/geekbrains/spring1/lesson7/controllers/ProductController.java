@@ -36,7 +36,7 @@ public class ProductController {
     @GetMapping("/products/change_price")
     public void changeScore(@RequestParam Long productId, @RequestParam Integer delta) {
         System.out.println(productId);
-       // studentService.changeScore(studentId, delta);
+        // studentService.changeScore(studentId, delta);
         productService.changePrice(productId, delta);
     }
 
