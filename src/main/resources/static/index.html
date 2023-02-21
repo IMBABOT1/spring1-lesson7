@@ -17,38 +17,39 @@
 <body>
 
 <div class="container" ng-controller="indexController">
-    <h3>Products</h3>
+    <form novalidate ng-submit="loadProducts()">
+        <div class="form-floating input-group-sm">
+            <input type="text" class="form-control" id="filterTitle" placeholder="" ng-model="filter.title_part">
+            <label for="filterTitle">Название продукта</label>
+        </div>
+        <p></p>
+        <div class="form-floating input-group-sm">
+            <input type="number" class="form-control" id="filterMinPrice" placeholder="" ng-model="filter.min_price">
+            <label for="filterMinPrice">Мин. цена</label>
+        </div>
+        <p></p>
+        <div class="form-floating input-group-sm">
+            <input type="number" class="form-control" id="filterMaxPrice" placeholder="" ng-model="filter.max_price">
+            <label for="filterMaxPrice">Макс. цена</label>
+        </div>
+        <p></p>
+        <button class="btn btn-outline-warning btn-sm" style="width: 100%;" type="submit">Применить</button>
+    </form>
+
+    <h3>Каталог товаров</h3>
     <table class="table table-hover">
         <tr>
             <td>ID</td>
-            <td>Title</td>
-            <td>Price</td>
-            <td>Action</td>
+            <td>Название</td>
+            <td>Цена</td>
         </tr>
         <tbody>
-        <tr ng-repeat="p in ProductsList">
+        <tr ng-repeat="p in ProductsPage.content">
             <td>{{p.id}}</td>
             <td>{{p.title}}</td>
-            <td>
-                <button class="btn btn-primary" ng-click="changePrice(p.id, -5)">-</button>
-                {{p.price}}
-                <button class="btn btn-primary" ng-click="changePrice(p.id, 5)">+</button>
-            </td>
-            <td>
-                <button class="btn btn-danger" ng-click="deleteProduct(p.id)">Delete</button>
-            </td>
+            <td>{{p.price}}</td>
         </tr>
         </tbody>
-
-        <p></p>
-        <h3>Filter</h3>
-        <form novalidate ng-submit="filter()">
-            <input class="form-control" type="number" placeholder="min" ng-model="filter.min">
-            <p></p>
-            <input class="form-control" type="number" placeholder="max" ng-model="filter.max">
-            <p></p>
-            <button type="submit" class="btn btn-primary">Filter</button>
-        </form>
     </table>
 </div>
 
