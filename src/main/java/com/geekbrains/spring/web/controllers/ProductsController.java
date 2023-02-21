@@ -62,7 +62,7 @@ public class ProductsController {
     public void removeFromCart(@PathVariable Long id) {
         Optional<Product> p = productsService.findById(id);
         if (p.isPresent()) {
-            cart.getCart().remove(p.get());
+            cart.remove(p.get());
             return;
         }
         throw new ResourceNotFoundException("Product not found: " + id);
