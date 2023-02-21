@@ -16,12 +16,28 @@ angular.module('app', []).controller('indexController', function ($scope, $http)
     };
 
 
-    $scope.addToCart = function (productId) {
-        $http.get(contextPath + '/products/add/' + productId)
+
+    $scope.loadCart = function () {
+        $http.get(contextPath + '/products/getCart/')
             .then(function (response) {
                 $scope.CartPage = response.data;
             });
     }
 
+    $scope.addToCart = function (productId) {
+        $http.get(contextPath + '/products/add/' + productId)
+            .then(function (response) {
+                $scope.loadCart();
+            });
+    }
+
+    $scope.removeFromCart = function (productId){
+        $http.delete(contextPath + '/products/remove/' + productId)
+            .then(function (response) {
+                $scope.loadCart();
+            });
+    }
+
     $scope.loadProducts();
+    $scope.loadCart();
 });

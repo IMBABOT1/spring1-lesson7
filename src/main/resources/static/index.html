@@ -63,13 +63,16 @@
             <td>ID</td>
             <td>Название</td>
             <td>Цена</td>
-
+            <td>Action</td>
         </tr>
         <tbody>
         <tr ng-repeat="p in CartPage">
             <td>{{p.id}}</td>
             <td>{{p.title}}</td>
             <td>{{p.price}}</td>
+            <td>
+                <button class="btn btn-danger" ng-click="removeFromCart(p.id)">Remove</button>
+            </td>
         </tr>
         </tbody>
     </table>

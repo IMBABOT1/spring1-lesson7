@@ -40,19 +40,32 @@ public class ProductsController {
     }
 
     @GetMapping("/add/{id}")
-    public List<ProductDto> addToCart(@PathVariable Long id) {
+    public void  addToCart(@PathVariable Long id) {
         Optional<Product> p = productsService.findById(id);
-        List<ProductDto> productDto = new ArrayList<>();
         if (p.isPresent()) {
             cart.addToCart(p.get());
-        } else {
-            throw new ResourceNotFoundException("Product not found: " + id);
+            return;
         }
-        for(Product product : cart.getCart()){
-            productDto.add(productConverter.entityToDto(product));
-        }
+        throw new ResourceNotFoundException("Product not found: " + id);
+    }
 
-        return productDto;
+    @GetMapping("/getCart")
+    public List<ProductDto>  getCart() {
+        List<ProductDto> products = new ArrayList<>();
+        for (Product product : cart.getCart()){
+            products.add(productConverter.entityToDto(product));
+        }
+        return products;
+    }
+
+    @DeleteMapping("/remove/{id}")
+    public void removeFromCart(@PathVariable Long id) {
+        Optional<Product> p = productsService.findById(id);
+        if (p.isPresent()) {
+            cart.getCart().remove(p.get());
+            return;
+        }
+        throw new ResourceNotFoundException("Product not found: " + id);
     }
 
 

@@ -25,7 +25,9 @@ public class Cart {
         cart.add(product);
     }
 
-
+    public void remove(Long id){
+        cart.remove(id);
+    }
 
 
     @Override
