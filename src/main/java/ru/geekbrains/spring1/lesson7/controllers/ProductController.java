@@ -49,4 +49,16 @@ public class ProductController {
         return productService.filter(min, max);
     }
 
+    @PutMapping
+    public Product updateStudent(@RequestBody Product product) {
+        return productService.save(product);
+    }
+
+    @PostMapping
+    public Product saveNewStudent(@RequestBody Product product) {
+        product.setId(null);
+        return productService.save(product);
+    }
+
+
 }
