@@ -1,5 +1,6 @@
 package com.geekbrains.spring.web.services;
 
+import com.geekbrains.spring.web.entities.Product;
 import com.geekbrains.spring.web.entities.Role;
 import com.geekbrains.spring.web.entities.User;
 import com.geekbrains.spring.web.repositories.UserRepository;
@@ -35,5 +36,9 @@ public class UserService implements UserDetailsService {
 
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
         return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
+    }
+
+    public User save(User user) {
+        return userRepository.save(user);
     }
 }
