@@ -3,8 +3,12 @@ package com.geekbrains.spring.web.converters;
 import com.geekbrains.spring.web.dto.ProductDto;
 import com.geekbrains.spring.web.dto.UserDto;
 import com.geekbrains.spring.web.entities.Product;
+import com.geekbrains.spring.web.entities.Role;
 import com.geekbrains.spring.web.entities.User;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 @Component
 public class UserConverter {

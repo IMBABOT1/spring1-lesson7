@@ -43,6 +43,14 @@ angular.module('app', ['ngStorage']).controller('indexController', function ($sc
         }
     };
 
+    $scope.createUserJson = function () {
+        console.log($scope.newUserJson);
+        $http.post(contextPath + '/users', $scope.newUserJson)
+            .then(function (response) {
+                $scope.loadProducts();
+            });
+    }
+
     $scope.clearUser = function () {
         delete $localStorage.springWebUser;
         $http.defaults.headers.common.Authorization = '';

@@ -80,6 +80,19 @@
     </table>
 
     <button class="btn btn-danger" ng-click="showCurrentUserInfo()">Обо мне</button>
+
+
+    <p></p>
+    <h3>Добавить юзера через JSON</h3>
+    <form novalidate ng-submit="createUserJson()">
+        <input class="form-control" type="text" placeholder="username" ng-model="newUserJson.username">
+        <p></p>
+        <input class="form-control" type="text" placeholder="password" ng-model="newUserJson.password">
+        <p></p>
+        <input class="form-control" type="text" placeholder="email" ng-model="newUserJson.email">
+        <p></p>
+        <button type="submit" class="btn btn-primary">Сохранить JSON юзера</button>
+    </form>
 </div>
 
 </body>

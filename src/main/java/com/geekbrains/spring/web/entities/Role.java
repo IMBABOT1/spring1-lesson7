@@ -19,6 +19,7 @@ public class Role {
     @Column(name = "name")
     private String name;
 
+
     @CreationTimestamp
     @Column(name = "created_at")
     private LocalDateTime createdAt;
