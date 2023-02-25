@@ -26,6 +26,17 @@ public class User {
     @Column(name = "email")
     private String email;
 
+
+    public User(){
+
+    }
+    public User(Long id, String username, String password, String email) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+    }
+
     @ManyToMany
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
