@@ -19,6 +19,27 @@ angular.module('app', ['ngStorage']).controller('indexController', function ($sc
         });
     };
 
+    $scope.addToCart = function (productId) {
+        $http.get('http://localhost:8189/app/api/v1/carts/add/' + productId)
+            .then(function (response) {
+                $scope.loadCart();
+            });
+    }
+
+    $scope.clearCart = function () {
+        $http.get('http://localhost:8189/app/api/v1/carts/clear')
+            .then(function (response) {
+                $scope.loadCart();
+            });
+    }
+
+    $scope.loadCart = function () {
+        $http.get('http://localhost:8189/app/api/v1/carts')
+            .then(function (response) {
+                $scope.Cart = response.data;
+            });
+    }
+
     $scope.tryToAuth = function () {
         $http.post('http://localhost:8189/app/auth', $scope.user)
             .then(function successCallback(response) {
@@ -43,14 +64,6 @@ angular.module('app', ['ngStorage']).controller('indexController', function ($sc
         }
     };
 
-    $scope.createUserJson = function () {
-        console.log($scope.newUserJson);
-        $http.post(contextPath + '/users', $scope.newUserJson)
-            .then(function (response) {
-                $scope.loadProducts();
-            });
-    }
-
     $scope.clearUser = function () {
         delete $localStorage.springWebUser;
         $http.defaults.headers.common.Authorization = '';
@@ -74,4 +87,5 @@ angular.module('app', ['ngStorage']).controller('indexController', function ($sc
     }
 
     $scope.loadProducts();
+    $scope.loadCart();
 });
