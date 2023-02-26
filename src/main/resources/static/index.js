@@ -19,6 +19,10 @@ angular.module('app', ['ngStorage']).controller('indexController', function ($sc
         });
     };
 
+    $scope.createOrder = function (){
+
+    }
+
     $scope.addToCart = function (productId) {
         $http.get('http://localhost:8189/app/api/v1/carts/add/' + productId)
             .then(function (response) {

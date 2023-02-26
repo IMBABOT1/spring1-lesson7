@@ -59,4 +59,8 @@ create table order_items (
     quantity                int not null,
     price_per_product       int not null,
     price                   int not null
-)
+);
+
+insert into orders (user_id, total_price, address, phone)
+values (1, 100, 'address', 'phone'),
+       (2, 100, 'address1', 'phone');
