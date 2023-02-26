@@ -22,4 +22,8 @@ public class Product {
 
     @Column(name = "price")
     private Integer price;
+
+    @ManyToOne
+    @JoinColumn(name = "order_item")
+    private OrderItem orderItem;
 }

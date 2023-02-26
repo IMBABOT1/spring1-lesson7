@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "order_items")
@@ -17,14 +18,23 @@ public class OrderItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+
     @Column(name = "product_id")
     private Long productId;
+
     @Column(name = "product_title")
     private String productTitle;
+
     @Column(name = "quantity")
     private int quantity;
+
     @Column(name = "price_per_product")
     private int pricePerProduct;
+
     @Column(name = "price")
     private int price;
+
+
+    @OneToMany(mappedBy = "orderItem")
+    private List<Product> products;
 }
