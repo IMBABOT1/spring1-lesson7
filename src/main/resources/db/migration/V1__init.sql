@@ -56,6 +56,7 @@ create table order_items (
     product_id              bigint not null references products (id),
     user_id                 bigint not null references users (id),
     order_id                bigint not null references orders (id),
+    product_title           varchar(255),
     quantity                int not null,
     price_per_product       int not null,
     price                   int not null
