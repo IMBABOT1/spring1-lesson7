@@ -1,14 +1,13 @@
 create table products (
     id          bigserial primary key,
     title       varchar(255),
-    price       int,
-    order_item  bigint not null references order_items (id)
+    price       int
 );
 
-insert into products (title, price, order_item)
-values ('Milk', 100, 1),
-       ('Bread', 80, 1),
-       ('Cheese', 90, 1);
+insert into products (title, price)
+values ('Milk', 100),
+       ('Bread', 80),
+       ('Cheese', 90);
 
 create table users (
     id         bigserial primary key,
@@ -57,12 +56,7 @@ create table order_items (
     product_id              bigint not null references products (id),
     user_id                 bigint not null references users (id),
     order_id                bigint not null references orders (id),
-    product_title           varchar(255),
     quantity                int not null,
     price_per_product       int not null,
     price                   int not null
-);
-
-insert into orders (user_id, total_price, address, phone)
-values (1, 100, 'address', 'phone'),
-       (2, 100, 'address1', 'phone');
+)
