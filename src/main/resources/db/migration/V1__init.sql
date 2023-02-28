@@ -51,6 +51,12 @@ create table orders (
     phone           varchar(255)
 );
 
+
+insert into orders (user_id, total_price, address, phone)
+values
+    (1, 100, 'address', 'phone'),
+    (1, 200, 'address', 'phone');
+
 create table order_items (
     id                      bigserial primary key,
     product_id              bigint not null references products (id),
